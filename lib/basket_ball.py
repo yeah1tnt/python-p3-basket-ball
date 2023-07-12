@@ -182,3 +182,54 @@ def game_dict():
             ]
         }
     }
+
+home = game_dict()["home"]["players"]
+away = game_dict()["away"]["players"]
+both = home + away
+
+def num_points_per_game(name):
+    for i in both:
+        if i["name"] == name:
+            return i["points_per_game"]
+    return None
+
+def player_age(name):
+    for i in both:
+        if i["name"] == name:
+            return i["age"]
+    return None
+
+def team_colors(name):
+    for i in game_dict():
+        if game_dict()[i]["team_name"] == name:
+            return game_dict()[i]["colors"]
+        
+def team_names():
+    list = []
+    for i in game_dict():
+        list.append(game_dict()[i]["team_name"])
+    return list
+
+def player_numbers(name):
+    number = []
+    for i in game_dict():
+        if game_dict()[i]["team_name"] == name:
+            for j in game_dict()[i]["players"]:
+                number.append(j["number"])
+    return number
+def player_stats(name):
+    for i in both:
+        if i["name"] == name:
+            return i
+
+def average_rebounds_by_shoe_brand():
+    shoe_dict = {}
+    for i in both:
+        brand = i["shoe_brand"]
+        rebounds = i["rebounds_per_game"]
+        if brand not in shoe_dict:
+            shoe_dict[brand] = []
+        shoe_dict[brand].append(rebounds)
+    for i, j in shoe_dict.items():
+        avg = sum(j)/len(j)
+        print(f"{i}:  {avg:.2f}")

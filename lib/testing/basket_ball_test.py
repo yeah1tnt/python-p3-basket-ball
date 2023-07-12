@@ -7,6 +7,7 @@ from basket_ball import (
 
 import io
 import sys
+from lib.basket_ball import *
 
 class TestBasketBall:
     '''Module basket_ball.py'''
